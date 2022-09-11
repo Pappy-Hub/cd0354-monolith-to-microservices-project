@@ -22,4 +22,4 @@ after_success:
   - docker push pappydockerhub/reverseproxy
   - docker push pappydockerhub/udagram-api-user
   - docker push pappydockerhub/udagram-api-feed
-  - docker push pappydockerhub/udagram-frontend:local
+  - docker push pappydockerhub/udagram-frontend
