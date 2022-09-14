@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: udagram-api-feed
-        image: docker.io/pappydockerhub/udagram-api-feed:latest
+        image: docker.io/pappydockerhub/udagram-api-feed:v2
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

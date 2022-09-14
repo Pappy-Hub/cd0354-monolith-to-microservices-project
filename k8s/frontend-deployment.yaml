@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: udagram-frontend
-        image: docker.io/pappydockerhub/udagram-frontend:v1
+        image: docker.io/pappydockerhub/udagram-frontend:v2
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
