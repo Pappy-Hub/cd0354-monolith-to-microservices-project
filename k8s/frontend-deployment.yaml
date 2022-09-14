@@ -1,28 +1,44 @@
 apiVersion: apps/v1
-
 kind: Deployment
-
 metadata:
-  name: frontend
-
+  name: udagram-frontend
   labels:
-    app: frontend
-
+    app: udagram-frontend
 spec:
   replicas: 2
-
   selector:
     matchLabels:
-      app: frontend
-
+      app: udagram-frontend
   template:
     metadata:
       labels:
-        app: frontend
-
+        app: udagram-frontend
     spec:
       containers:
-        - name: frontend
-          image: pappydockerhub/udagram-frontend:v1
-          ports:
-            - containerPort: 8100
+      - name: udagram-frontend
+        image: docker.io/pappydockerhub/udagram-frontend:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m
+        envFrom:
+          - configMapRef:
+              name: udagram-configmap
+          - secretRef:
+              name: env-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: udagram-frontend
+  name: udagram-frontend
+spec:
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
