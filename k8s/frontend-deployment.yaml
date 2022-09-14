@@ -15,21 +15,21 @@ spec:
         app: udagram-frontend
     spec:
       containers:
-      - name: udagram-frontend
-        image: docker.io/pappydockerhub/udagram-frontend:v2
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
-        resources:
-          limits:
-            cpu: 500m
-          requests:
-            cpu: 200m
-        envFrom:
-          - configMapRef:
-              name: udagram-configmap
-          - secretRef:
-              name: env-secret
+        - name: udagram-frontend
+          image: docker.io/pappydockerhub/udagram-frontend:v2
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 200m
+          envFrom:
+            - configMapRef:
+                name: udagram-configmap
+            - secretRef:
+                name: env-secret
 ---
 apiVersion: v1
 kind: Service
@@ -39,6 +39,6 @@ metadata:
   name: udagram-frontend
 spec:
   ports:
-  - name: "8080"
-    port: 8080
-    targetPort: 8080
+    - name: "8080"
+      port: 8080
+      targetPort: 8080
